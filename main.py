@@ -7,15 +7,15 @@ from qrcodes import *
 from jsoninputfile import *
 
 
-# TODO: fix error 'NO module named PIL'
+# TODO: add logo inside qr code
 # TODO: extract QR size as parameter (box size, border)
 
 def setup_input_args():
     parser = argparse.ArgumentParser(description="My QR Code Generator")
     parser.add_argument("--input_file", help="Input file path")
     parser.add_argument("--output_dir", help="Output directory")
-    args = parser.parse_args()
-    return args
+    arguments = parser.parse_args()
+    return arguments
 
 
 if __name__ == "__main__":
