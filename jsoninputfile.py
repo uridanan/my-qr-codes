@@ -28,6 +28,43 @@ def read_json_from_file(filepath):
         return None
 
 
+def get_json_value(data, key, default_value=None):
+    """
+    Retrieves the value of a key from JSON data (dictionary or nested dictionaries).
+
+    Args:
+        data: The JSON data (dictionary or nested dictionaries).
+        key: The key to search for. Can be a string for a top-level key,
+             or a dot-separated string for nested keys (e.g., "address.city").
+
+    Returns:
+        The value associated with the key, or None if the key is not found
+        or if the data is not a dictionary.  Handles nested keys.
+        :param key:
+        :param data:
+        :param default_value:
+    """
+
+    if not isinstance(data, dict):  # Check if data is a dictionary
+        return default_value
+
+    if "." in key:  # Handle nested keys
+        keys = key.split(".")
+        current_data = data
+        for k in keys:
+            if isinstance(current_data, dict) and k in current_data:
+                current_data = current_data[k]
+            else:
+                return default_value  # Key not found at this level
+        return current_data  # Return the value at the end of the chain
+
+    else:  # Handle top-level keys
+        if key in data:
+            return data[key]
+        else:
+            return default_value
+
+
 # Example usage:
 if __name__ == "__main__":
     file_path = "data.json"  # Replace with your file path

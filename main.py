@@ -7,8 +7,9 @@ from qrcodes import *
 from jsoninputfile import *
 
 
-# TODO: add logo inside qr code
-# TODO: extract QR size as parameter (box size, border)
+# TODO: QR code should be around the logo, not under the logo
+# TODO: logo should preserve proportions when resized
+# TODO: create UI (ask gemini or Claude to create it in HTML)
 
 def setup_input_args():
     parser = argparse.ArgumentParser(description="My QR Code Generator")
@@ -31,9 +32,23 @@ if __name__ == "__main__":
             print("JSON data loaded successfully:")
             # Process the data as needed. Here are some examples:
             if isinstance(json_data, dict):
-                filename = json_data["filename"]
-                url = json_data["url"]
-                generate_qr_code(url, filename, "purple")
+                url = get_json_value(json_data,"url")
+                logo_file = get_json_value(json_data,"logo_file")
+                filename = get_json_value(json_data,"filename","qr_code.png")
+                fill_color = get_json_value(json_data,"fill_color","black")
+                back_color = get_json_value(json_data,"back_color","white")
+                size = get_json_value(json_data,"size",10)
+                border = get_json_value(json_data,"border",1)
+
+                # generate_qr_code(url, filename, "purple")
+                generate_qr_code_with_logo(data=url,
+                                           logo_file=logo_file,
+                                           output_file=filename,
+                                           fill_color=fill_color,
+                                           back_color=back_color,
+                                           size=size,
+                                           border=border)
+
                 # for key, value in json_data.items():
                 #     print(f"{key}: {value}")
             elif isinstance(json_data, list):
