@@ -1,0 +1,4 @@
+*.pyc
+*.pyc
+__pycache__/qrcodes.cpython-313.pyc
+__pycache__/jsoninputfile.cpython-313.pyc
