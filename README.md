@@ -2,6 +2,9 @@
 
 This Python package provides a simple and reusable way to generate QR codes, 
 optionally embedding a logo and customizing colors and sizes.
+The package offers 2 methods
+**generate_qr_code_bytes:** returns the image data for use in rendering
+**generate_qr_code_file:** saves the image to a file and returns the path
 
 ## Installation
 
@@ -10,13 +13,15 @@ pip install qr_generator
 ```
 
 ## Usage
-    from qr_generator import generate_qr_code_with_logo
+    from qr_generator import generate_qr_code_bytes, generate_qr_code_file
 
 ### Basic usage (URL is required)
-    generate_qr_code_with_logo(data="[https://www.example.com](https://www.example.com)", 
+    image_bytes = generate_qr_code_bytes(data="[https://www.example.com](https://www.example.com)")
+    image_path = generate_qr_code_file(data="[https://www.example.com](https://www.example.com)", 
                                            output_file="my_qr_code.png")
+
 ### With a logo and custom colors/sizes
-    generate_qr_code_with_logo(
+    image_path = generate_qr_code_file(
         data="[https://www.example.com](https://www.example.com)",
         output_file="my_qr_code.png"
         logo_file="path/to/your/logo.png",  # Path to your logo image (PNG, JPG)
@@ -35,7 +40,7 @@ pip install qr_generator
     @app.route("/qr")
     def generate_qr():
         qr_code_path = "my_qr_code.png"
-        generate_qr_code_with_logo(
+        generate_qr_code_file(
             data="[https://www.example.com](https://www.example.com)",
             output_file=qr_code_path
             logo_file="path/to/your/logo.png",  # Path to your logo image (PNG, JPG)
@@ -54,7 +59,7 @@ pip install qr_generator
 
 
 ## Parameters
-The generate_qr_code function accepts the following parameters:
+The generate_qr_code_file function accepts the following parameters:
 
 * data (required): The data to encode in the QR code (usually a URL or text).
 * output_file (optional): the filename under which to save the QR code once generated. 

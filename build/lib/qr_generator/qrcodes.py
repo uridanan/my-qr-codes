@@ -1,39 +1,23 @@
+import io
 import qrcode
 from PIL import Image
 
-def generate_qr_code(link, filename="qr_code.png", fill_color='black', back_color='white'):
-    """
-    Generates a QR code for a given link and saves it as a PNG image.
 
-    Args:
-        link: The URL or text to encode in the QR code.
-        filename: The name of the file to save the QR code as (default: qr_code.png).
-        :param link:
-        :param filename:
-        :param fill_color:
-        :param back_color:
-    """
-    try:
-        qr = qrcode.QRCode(
-            version=1,  # Adjust version for larger data
-            error_correction=qrcode.constants.ERROR_CORRECT_L,  # Adjust error correction level
-            box_size=10,  # Adjust box size for QR code size
-            border=4,  # Adjust border size
-        )
-        qr.add_data(link)
-        qr.make(fit=True)  # Make the QR code fit the data
+def generate_qr_code_file(data, logo_file, output_file="qr_code.png", fill_color='black', back_color='white', size=10, border=4):
+    """Embeds an image in the center of a QR code."""
+    qr_image_bytes = generate_qr_code_bytes(data, logo_file, fill_color, back_color, size, border)
+    saved_path = save_image_to_file(qr_image_bytes, output_file)  # Call the save function
 
-        img = qr.make_image(fill_color=fill_color, back_color=back_color)  # Customize colors
-        img.save(filename)
-        print(f"QR code saved to {filename}")
+    if saved_path:
+        # Use saved_path in your application
+        print(f"Image saved at: {saved_path}")
+    else:
+        print("Image save failed")
 
-    except Exception as e:
-        print(f"An error occurred: {e}")
+    return saved_path
 
 
-
-
-def generate_qr_code_with_logo(data, logo_file, output_file="qr_code.png", fill_color='black', back_color='white', size=10, border=4):
+def generate_qr_code_bytes(data, logo_file, fill_color='black', back_color='white', size=10, border=4):
     """Embeds an image in the center of a QR code."""
 
     try:
@@ -82,8 +66,22 @@ def generate_qr_code_with_logo(data, logo_file, output_file="qr_code.png", fill_
 
 
         # Save the combined image
-        qr_image.save(output_file)
-        print(f"QR code with embedded image saved to {output_file}")
+        img_bytes = io.BytesIO()
+        qr_image.save(img_bytes, format='PNG')
+        img_bytes.seek(0)  # Reset stream position
+        return img_bytes.getvalue()
 
     except Exception as e:
         print(f"An error occurred: {e}")
+
+
+def save_image_to_file(image_bytes, filename):
+    """Saves image bytes to a file."""
+    try:
+        image = Image.open(io.BytesIO(image_bytes))  # Open the image from bytes
+        image.save(filename)  # Save to the specified filename
+        print(f"Image saved to {filename}")
+        return filename  # Return the filename on success
+    except Exception as e:
+        print(f"Error saving image: {e}")
+        return None  # Or raise the exception if you prefer

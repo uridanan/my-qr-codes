@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as f: # For long description in Py
 
 setup(
     name="qr_generator",  # Your package name (must be unique on PyPI if you plan to publish)
-    version="0.1.0",  # Initial version
+    version="0.1.1",  # Initial version
     description="A package for generating QR codes with embedded images.",
     long_description=long_description, # Long description from README
     long_description_content_type="text/markdown", # Important for PyPi
