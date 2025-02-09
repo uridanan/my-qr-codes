@@ -1,1 +1,1 @@
-qr-generator
+qr_generator

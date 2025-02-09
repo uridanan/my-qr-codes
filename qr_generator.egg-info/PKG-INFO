@@ -1,5 +1,5 @@
 Metadata-Version: 2.2
-Name: qr-generator
+Name: qr_generator
 Version: 0.1.0
 Summary: A package for generating QR codes with embedded images.
 Author: Uri Danan
@@ -28,11 +28,11 @@ optionally embedding a logo and customizing colors and sizes.
 ## Installation
 
 ```bash
-pip install qr-generator
+pip install qr_generator
 ```
 
 ## Usage
-    from qr-generator import generate_qr_code_with_logo
+    from qr_generator import generate_qr_code_with_logo
 
 ### Basic usage (URL is required)
     generate_qr_code_with_logo(data="[https://www.example.com](https://www.example.com)", 
@@ -50,7 +50,7 @@ pip install qr-generator
 
 ## Web-app example
     from flask import Flask, send_from_directory
-    from qr-generator import generate_qr_code_with_logo
+    from qr_generator import generate_qr_code_with_logo
     
     app = Flask(__name__)
     

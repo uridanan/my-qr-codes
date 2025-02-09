@@ -10,7 +10,7 @@ pip install qr_generator
 ```
 
 ## Usage
-    from qr-generator import generate_qr_code_with_logo
+    from qr_generator import generate_qr_code_with_logo
 
 ### Basic usage (URL is required)
     generate_qr_code_with_logo(data="[https://www.example.com](https://www.example.com)", 
@@ -28,7 +28,7 @@ pip install qr_generator
 
 ## Web-app example
     from flask import Flask, send_from_directory
-    from qr-generator import generate_qr_code_with_logo
+    from qr_generator import generate_qr_code_with_logo
     
     app = Flask(__name__)
     

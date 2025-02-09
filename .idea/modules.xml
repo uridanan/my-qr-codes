@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/../QRCodesApp/.idea/QRCodesApp.iml" filepath="$PROJECT_DIR$/../QRCodesApp/.idea/QRCodesApp.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/my-qr-codes.iml" filepath="$PROJECT_DIR$/.idea/my-qr-codes.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/qr_generator_package.iml" filepath="$PROJECT_DIR$/.idea/qr_generator_package.iml" />
     </modules>
   </component>
 </project>
