@@ -7,13 +7,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="826604fe-b4a3-43a7-a0eb-183780fdc52c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/qr3.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr2.json" beforeDir="false" afterPath="$PROJECT_DIR$/qr2.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qr2.png" beforeDir="false" afterPath="$PROJECT_DIR$/qr2.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/qrcodes.py" beforeDir="false" afterPath="$PROJECT_DIR$/qrcodes.py" afterDir="false" />
-    </list>
+    <list default="true" id="826604fe-b4a3-43a7-a0eb-183780fdc52c" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />

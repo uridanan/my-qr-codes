@@ -8,6 +8,10 @@ def generate_qr_code(link, filename="qr_code.png", fill_color='black', back_colo
     Args:
         link: The URL or text to encode in the QR code.
         filename: The name of the file to save the QR code as (default: qr_code.png).
+        :param link:
+        :param filename:
+        :param fill_color:
+        :param back_color:
     """
     try:
         qr = qrcode.QRCode(
